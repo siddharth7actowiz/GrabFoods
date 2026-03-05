@@ -7,7 +7,7 @@ def parse_json(raw_json):
 
     if not merchant:
         return None
-
+    tips_val = merchant.get("sofConfiguration", {}).get("tips")
     restaurant_details = {
 
         "Restaurant_Name": merchant.get("name"),
@@ -18,7 +18,7 @@ def parse_json(raw_json):
 
         "Cuisine": merchant.get("cuisine"),
 
-        "Tip": merchant.get("sofConfiguration", {}).get("tips") or [],
+        "Tip": [tips_val] if tips val else [],
 
         "Timezone": merchant.get("timeZone"),
 
@@ -38,6 +38,12 @@ def parse_json(raw_json):
 
         "Timing_Everyday": merchant.get("openingHours", {}).get("displayedHours")
     }
+     for offers in merchant.get("offerCarousel", {}).get("offerHighlights", []):
+        off = {
+            "Title": offers.get("highlight").get("title"),
+            "SubTitle": offers.get("highlight").get("subtitle")
+        }
+        restaurant_details["Offers"].append(off)
 
     categories = merchant.get("menu", {}).get("categories", [])
 
@@ -86,3 +92,4 @@ def parse_json(raw_json):
 
 
     return Rest_Data
+
