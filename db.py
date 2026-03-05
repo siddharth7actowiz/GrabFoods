@@ -1,13 +1,11 @@
 import mysql.connector
 import json
 import time
-
 from typing import List, Tuple
 from config import *
 
 
 def make_connection():
-
     return mysql.connector.connect(
         user=USER,
         password=PASSWORD,
@@ -16,7 +14,8 @@ def make_connection():
         database=DB
     )
 
-def create_tables(cursor,tab1,tab2):
+
+def create_tables(cursor, tab1, tab2):
 
     cursor.execute(f"""
     CREATE TABLE IF NOT EXISTS {rst_tble}(
@@ -65,44 +64,34 @@ def batch_insert(cursor, con, insert_query: str, values: List[Tuple], batch_size
     for start in range(0, total_records, batch_size):
 
         end = min(start + batch_size, total_records)
-
         batch = values[start:end]
 
         try:
-
             cursor.executemany(insert_query, batch)
-
             con.commit()
 
             batch_count += 1
-
             print(f"Inserted batch {batch_count} ({start} -> {end})")
 
         except Exception as e:
-
             print(f"Batch failed ({start} -> {end})")
             print("Error:", e)
-
             failed_batches.append(batch)
 
     return batch_count, failed_batches
 
 
-
-
-def insert_into_database(parsed_data_list):
+def insert_into_database(cursor,con,parsed_data_list):
 
     start_time = time.time()
 
-    con = make_connection()
-    cursor = con.cursor()
 
-    create_tables(cursor,rst_tble,menu_tble)
+
+
 
     rest_values = []
     menu_values = []
 
-    # Prepare Values
     for parsed_data in parsed_data_list:
 
         rest = parsed_data["Restaurant_Details"]
@@ -125,6 +114,7 @@ def insert_into_database(parsed_data_list):
         ))
 
         for item in parsed_data["Menu_Items"]:
+
             menu_values.append((
                 item["Restaurant_ID"],
                 item["Category_Name"],
@@ -139,40 +129,51 @@ def insert_into_database(parsed_data_list):
                 item["Is_Top_Seller"]
             ))
 
-    # Insert Queries
 
-    rest_query = """
-    INSERT  INTO PDP_RESTAURANT
+    rest_query = f"""
+    INSERT INTO {rst_tble}(
+        Restaurant_ID,
+        Restaurant_Name,
+        Branch_Name,
+        Cuisine,
+        Tip,
+        Timezone,
+        ETA,
+        DeliveryOptions,
+        Rating,
+        Is_Open,
+        Currency_Code,
+        Currency_Symbol,
+        Offers,
+        Timing_Everyday
+    )
     VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-    ON DUPLICATE KEY UPDATE Restaurant_ID = 'Restaurant_ID'
+    ON DUPLICATE KEY UPDATE Restaurant_ID = Restaurant_ID
     """
 
-    menu_query = """
-    INSERT  INTO PDP_MENU_ITEMS
+    menu_query = f"""
+    INSERT INTO {menu_tble}(
+        Restaurant_ID,
+        Category_Name,
+        Item_Id,
+        Item_Name,
+        Item_Description,
+        Item_Price,
+        Item_Discounted_Price,
+        Item_Image_URL,
+        Item_Thumbnail_URL,
+        Item_Available,
+        Is_Top_Seller
+    )
     VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-    ON DUPLICATE KEY UPDATE Item_ID = 'Item_ID'
+    ON DUPLICATE KEY UPDATE Item_Id = Item_Id
     """
 
-    # Batch Insert
+    rest_batches, rest_failed = batch_insert(cursor, con, rest_query, rest_values)
+    menu_batches, menu_failed = batch_insert(cursor, con, menu_query, menu_values)
 
-    rest_batches, rest_failed = batch_insert(
-        cursor,
-        con,
-        rest_query,
-        rest_values
-    )
 
-    menu_batches, menu_failed = batch_insert(
-        cursor,
-        con,
-        menu_query,
-        menu_values
-    )
 
-    cursor.close()
-    con.close()
-
-    # Summary
     print("Restaurant batches:", rest_batches)
     print("Menu batches:", menu_batches)
 
