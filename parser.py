@@ -82,6 +82,7 @@ def parse_json(raw_json):
         "Menu_Items": menu_items
     }
 
-    # Rest(**Rest_Data)
+    Rest(**Rest_Data)
+
 
     return Rest_Data
