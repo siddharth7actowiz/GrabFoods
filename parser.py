@@ -1,5 +1,5 @@
 from modelvalidation import Rest
-
+from pydantic import ValidationError
 
 def parse_json(raw_json):
 
@@ -88,8 +88,12 @@ def parse_json(raw_json):
         "Menu_Items": menu_items
     }
 
-    Rest(**Rest_Data)
+  try:
+        Rest(**Rest_Data)
 
+        return Rest_Data
 
-    return Rest_Data
+    except ValidationError as e:
+        print("Error:",e)
+
 
