@@ -19,7 +19,7 @@ class RestaurantDetails(BaseModel):
 
     Cuisine: Optional[str]
 
-    Tip: List[str]
+    Tip: List[str] =[]
 
     Timezone: Optional[str]
 
@@ -35,7 +35,7 @@ class RestaurantDetails(BaseModel):
 
     Currency_Symbol: Optional[str]
 
-    Offers: List[Offer]
+    Offers: List[Offer]=[]
 
     Timing_Everyday: Optional[str]
 
@@ -68,5 +68,6 @@ class MenuItem(BaseModel):
 class Rest(BaseModel):
 
     Restaurant_Details: RestaurantDetails
+
 
     Menu_Items: List[MenuItem]
