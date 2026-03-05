@@ -1,14 +1,9 @@
 import mysql.connector
 import json
 import time
-
 from typing import List, Tuple
 from config import USER, PASSWORD, HOST, PORT, DB, BATCH_SIZE
 
-
-# -------------------------------
-# Database Connection
-# -------------------------------
 
 def make_connection():
 
@@ -20,15 +15,10 @@ def make_connection():
         database=DB
     )
 
-
-# -------------------------------
-# Create Tables
-# -------------------------------
-
 def create_tables(cursor):
 
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS PDP_RESTAURANT_TABLE(
+    CREATE TABLE IF NOT EXISTS PDP_RESTAURANT(
         id INT AUTO_INCREMENT PRIMARY KEY,
         Restaurant_ID VARCHAR(50) UNIQUE,
         Restaurant_Name VARCHAR(255),
@@ -48,7 +38,7 @@ def create_tables(cursor):
     """)
 
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS PDP_MENU_ITEMS_TABLE(
+    CREATE TABLE IF NOT EXISTS PDP_MENU_ITEMS(
         id INT AUTO_INCREMENT PRIMARY KEY,
         Restaurant_ID VARCHAR(50),
         Category_Name VARCHAR(255),
@@ -65,9 +55,6 @@ def create_tables(cursor):
     """)
 
 
-# -------------------------------
-# Batch Insert Function
-# -------------------------------
 
 def batch_insert(cursor, con, insert_query: str, values: List[Tuple], batch_size: int = BATCH_SIZE):
 
@@ -101,9 +88,7 @@ def batch_insert(cursor, con, insert_query: str, values: List[Tuple], batch_size
     return batch_count, failed_batches
 
 
-# -------------------------------
-# Main Insert Function
-# -------------------------------
+
 
 def insert_into_database(parsed_data_list):
 
@@ -160,12 +145,12 @@ def insert_into_database(parsed_data_list):
     # Insert Queries
 
     rest_query = """
-    INSERT IGNORE INTO PDP_RESTAURANT_TABLE
+    INSERT IGNORE INTO PDP_RESTAURANT
     VALUES (NULL,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
     """
 
     menu_query = """
-    INSERT IGNORE INTO PDP_MENU_ITEMS_TABLE
+    INSERT IGNORE INTO PDP_MENU_ITEMS
     VALUES (NULL,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
     """
 
@@ -190,8 +175,6 @@ def insert_into_database(parsed_data_list):
 
     # Summary
 
-    print("\nInsertion Summary")
-    print("-------------------")
 
     print("Restaurant batches:", rest_batches)
     print("Menu batches:", menu_batches)
