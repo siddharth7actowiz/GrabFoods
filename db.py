@@ -1,8 +1,9 @@
 import mysql.connector
 import json
 import time
+
 from typing import List, Tuple
-from config import USER, PASSWORD, HOST, PORT, DB, BATCH_SIZE
+from config import *
 
 
 def make_connection():
@@ -15,10 +16,10 @@ def make_connection():
         database=DB
     )
 
-def create_tables(cursor):
+def create_tables(cursor,tab1,tab2):
 
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS PDP_RESTAURANT(
+    cursor.execute(f"""
+    CREATE TABLE IF NOT EXISTS {rst_tble}(
         id INT AUTO_INCREMENT PRIMARY KEY,
         Restaurant_ID VARCHAR(50) UNIQUE,
         Restaurant_Name VARCHAR(255),
@@ -37,8 +38,8 @@ def create_tables(cursor):
     )
     """)
 
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS PDP_MENU_ITEMS(
+    cursor.execute(f"""
+    CREATE TABLE IF NOT EXISTS {menu_tble}(
         id INT AUTO_INCREMENT PRIMARY KEY,
         Restaurant_ID VARCHAR(50),
         Category_Name VARCHAR(255),
@@ -53,7 +54,6 @@ def create_tables(cursor):
         Is_Top_Seller BOOLEAN
     )
     """)
-
 
 
 def batch_insert(cursor, con, insert_query: str, values: List[Tuple], batch_size: int = BATCH_SIZE):
@@ -97,7 +97,7 @@ def insert_into_database(parsed_data_list):
     con = make_connection()
     cursor = con.cursor()
 
-    create_tables(cursor)
+    create_tables(cursor,rst_tble,menu_tble)
 
     rest_values = []
     menu_values = []
@@ -108,7 +108,6 @@ def insert_into_database(parsed_data_list):
         rest = parsed_data["Restaurant_Details"]
 
         rest_values.append((
-
             rest["Restaurant_ID"],
             rest["Restaurant_Name"],
             rest["Branch_Name"],
@@ -126,9 +125,7 @@ def insert_into_database(parsed_data_list):
         ))
 
         for item in parsed_data["Menu_Items"]:
-
             menu_values.append((
-
                 item["Restaurant_ID"],
                 item["Category_Name"],
                 item["Item_ID"],
@@ -145,13 +142,15 @@ def insert_into_database(parsed_data_list):
     # Insert Queries
 
     rest_query = """
-    INSERT IGNORE INTO PDP_RESTAURANT
-    VALUES (NULL,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    INSERT  INTO PDP_RESTAURANT
+    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    ON DUPLICATE KEY UPDATE Restaurant_ID = 'Restaurant_ID'
     """
 
     menu_query = """
-    INSERT IGNORE INTO PDP_MENU_ITEMS
-    VALUES (NULL,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    INSERT  INTO PDP_MENU_ITEMS
+    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    ON DUPLICATE KEY UPDATE Item_ID = 'Item_ID'
     """
 
     # Batch Insert
@@ -174,8 +173,6 @@ def insert_into_database(parsed_data_list):
     con.close()
 
     # Summary
-
-
     print("Restaurant batches:", rest_batches)
     print("Menu batches:", menu_batches)
 
