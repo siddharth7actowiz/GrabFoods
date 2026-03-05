@@ -15,14 +15,12 @@ def main():
     for raw_json in load_files(config.DATA_DIR, start, end):
 
         parsed = parse_json(raw_json)
-
-        if not parsed:
-            continue
         insert_into_database([parsed])
 
-    print("Total pipeline time:", time.time() - start_time)
+    print(f"Total time for {start} to {end}:", time.time() - start_time)
 
 
 
 if __name__ == "__main__":
     main()
+
