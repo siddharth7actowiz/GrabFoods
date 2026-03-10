@@ -3,12 +3,12 @@ import gzip
 import json
 
 
-def load_files(data_dir, start, end):
+def load_files(data_dir,start_val,end_va):
 
     files = os.listdir(data_dir)
     files.sort()
 
-    for file in files[start:end]:
+    for file in files[start_val:end_val]:
 
         path = os.path.join(data_dir, file)
 
@@ -18,5 +18,6 @@ def load_files(data_dir, start, end):
                 yield json.load(f)
 
         except Exception as e:
+
 
             print("Failed file:", file, e)
