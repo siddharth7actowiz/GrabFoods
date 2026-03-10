@@ -7,7 +7,13 @@ def parse_json(raw_json):
 
     if not merchant:
         return None
-    tips_val = merchant.get("sofConfiguration", {}).get("tips")
+    tip = merchant.get("sofConfiguration", {}).get("tips")
+
+    if isinstance(tip, str):
+        tip = [tip]
+
+    Tip =tip or []
+    
     restaurant_details = {
 
         "Restaurant_Name": merchant.get("name"),
@@ -18,7 +24,7 @@ def parse_json(raw_json):
 
         "Cuisine": merchant.get("cuisine"),
 
-        "Tip": [tips_val] if tips val else [],
+        "Tip": Tip,
 
         "Timezone": merchant.get("timeZone"),
 
@@ -81,19 +87,12 @@ def parse_json(raw_json):
                 "Is_Top_Seller": bool(item.get("topSeller"))
             })
 
-    Rest_Data = {
+   restaurant_details["Menu"]=json.dumps(menu_items)   
+    try:
+        Rest(**restaurant_details)
 
-        "Restaurant_Details": restaurant_details,
-
-        "Menu_Items": menu_items
-    }
-
-  try:
-        Rest(**Rest_Data)
-
-        return Rest_Data
-
-    except ValidationError as e:
-        print("Error:",e)
+        return restaurant_details
+    except ValidationError as v:
+        print(v)
 
 
