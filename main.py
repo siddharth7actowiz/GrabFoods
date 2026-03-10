@@ -9,30 +9,18 @@ from parser import parse_json
 from db import insert_into_database, make_connection, create_tables
 
 # Logger Setup 
-
-os.makedirs("logs", exist_ok=True)
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(threadName)-10s - %(levelname)s - %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-    handlers=[
-        logging.FileHandler("pipeline.log", mode="a"),
-        logging.StreamHandler()
-    ]
-)
-
-logger = logging.getLogger(__name__)
-
+logger=logging.getLogger("Pipeline Logger")
+logger.setLevel(logging.info)
+formater=logging.Formatter("%(asct)")
 #  Worker 
 def process_chunk(chunk_start, chunk_end):
-    logger.info(f"Started  → files {chunk_start} to {chunk_end}")
+    logger.info(f"Started     files {chunk_start} to {chunk_end}")
     
     try:
         con = make_connection()
         cursor = con.cursor()
-        create_tables(cursor, tab1, tab2)
-        logger.debug(f"DB connection established for range {chunk_start}-{chunk_end}")
+        create_tables(cursor,TABLE_NAME)
+        logger.info(f"DB connection established for range {chunk_start}-{chunk_end}")
     except Exception as e:
         logger.error(f"DB connection failed for range {chunk_start}-{chunk_end}: {e}")
         return
@@ -71,7 +59,7 @@ def process_chunk(chunk_start, chunk_end):
     cursor.close()
     con.close()
 
-    logger.info(f"Finished → files {chunk_start} to {chunk_end} | parsed={total_parsed} skipped={total_failed}")
+    logger.info(f"Finished    files {chunk_start} to {chunk_end} | parsed={total_parsed} skipped={total_failed}")
 
 
 #  Main Thread
@@ -101,7 +89,7 @@ def main():
 
     for t in threads:
         t.start()
-        logger.debug(f"{t.name} launched → {t._args}")
+        logger.debug(f"{t.name} launched    {t._args}")
 
     for t in threads:
         t.join()
