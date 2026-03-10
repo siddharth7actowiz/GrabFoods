@@ -1,0 +1,126 @@
+2026-03-10 21:56:14,772 - MainThread - INFO - Pipeline started
+2026-03-10 21:56:14,773 - MainThread - INFO - Files: 0 to 10000 | Total: 10000 | Threads: 8 | Chunk size: 1250
+2026-03-10 21:56:14,901 - MainThread - INFO - Database connected and table verified
+2026-03-10 21:56:14,904 - MainThread - INFO - Thread-1 launched   range (0, 1250)
+2026-03-10 21:56:14,905 - MainThread - INFO - Thread-2 launched   range (1250, 2500)
+2026-03-10 21:56:14,906 - MainThread - INFO - Thread-3 launched   range (2500, 3750)
+2026-03-10 21:56:14,907 - MainThread - INFO - Thread-4 launched   range (3750, 5000)
+2026-03-10 21:56:14,909 - MainThread - INFO - Thread-5 launched   range (5000, 6250)
+2026-03-10 21:56:14,918 - MainThread - INFO - Thread-6 launched   range (6250, 7500)
+2026-03-10 21:56:14,919 - Thread-2 - INFO - Started files 1250 to 2500
+2026-03-10 21:56:14,920 - Thread-1 - INFO - Started files 0 to 1250
+2026-03-10 21:56:14,921 - MainThread - INFO - Thread-7 launched   range (7500, 8750)
+2026-03-10 21:56:14,922 - Thread-3 - INFO - Started files 2500 to 3750
+2026-03-10 21:56:14,922 - Thread-4 - INFO - Started files 3750 to 5000
+2026-03-10 21:56:14,930 - Thread-5 - INFO - Started files 5000 to 6250
+2026-03-10 21:56:14,930 - MainThread - INFO - Thread-8 launched   range (8750, 10000)
+2026-03-10 21:56:14,932 - Thread-6 - INFO - Started files 6250 to 7500
+2026-03-10 21:56:14,936 - Thread-7 - INFO - Started files 7500 to 8750
+2026-03-10 21:56:14,941 - Thread-8 - INFO - Started files 8750 to 10000
+2026-03-10 21:56:52,198 - MainThread - INFO - Pipeline started
+2026-03-10 21:56:52,199 - MainThread - INFO - Files: 10000 to 20000 | Total: 10000 | Threads: 8 | Chunk size: 1250
+2026-03-10 21:56:53,689 - MainThread - INFO - Database connected and table verified
+2026-03-10 21:56:53,691 - MainThread - INFO - Thread-1 launched   range (10000, 11250)
+2026-03-10 21:56:53,693 - MainThread - INFO - Thread-2 launched   range (11250, 12500)
+2026-03-10 21:56:53,694 - MainThread - INFO - Thread-3 launched   range (12500, 13750)
+2026-03-10 21:56:53,695 - MainThread - INFO - Thread-4 launched   range (13750, 15000)
+2026-03-10 21:56:53,696 - MainThread - INFO - Thread-5 launched   range (15000, 16250)
+2026-03-10 21:56:53,697 - MainThread - INFO - Thread-6 launched   range (16250, 17500)
+2026-03-10 21:56:53,701 - MainThread - INFO - Thread-7 launched   range (17500, 18750)
+2026-03-10 21:56:53,703 - MainThread - INFO - Thread-8 launched   range (18750, 20000)
+2026-03-10 21:56:53,706 - Thread-2 - INFO - Started files 11250 to 12500
+2026-03-10 21:56:53,708 - Thread-1 - INFO - Started files 10000 to 11250
+2026-03-10 21:56:53,708 - Thread-3 - INFO - Started files 12500 to 13750
+2026-03-10 21:56:53,713 - Thread-4 - INFO - Started files 13750 to 15000
+2026-03-10 21:56:53,716 - Thread-5 - INFO - Started files 15000 to 16250
+2026-03-10 21:56:53,717 - Thread-6 - INFO - Started files 16250 to 17500
+2026-03-10 21:56:53,719 - Thread-7 - INFO - Started files 17500 to 18750
+2026-03-10 21:56:53,725 - Thread-8 - INFO - Started files 18750 to 20000
+2026-03-10 21:57:11,525 - MainThread - INFO - Pipeline started
+2026-03-10 21:57:11,526 - MainThread - INFO - Files: 20000 to 30000 | Total: 10000 | Threads: 8 | Chunk size: 1250
+2026-03-10 21:57:14,507 - MainThread - INFO - Database connected and table verified
+2026-03-10 21:57:14,510 - MainThread - INFO - Thread-1 launched   range (20000, 21250)
+2026-03-10 21:57:14,516 - MainThread - INFO - Thread-2 launched   range (21250, 22500)
+2026-03-10 21:57:14,525 - MainThread - INFO - Thread-3 launched   range (22500, 23750)
+2026-03-10 21:57:14,527 - Thread-1 - INFO - Started files 20000 to 21250
+2026-03-10 21:57:14,527 - MainThread - INFO - Thread-4 launched   range (23750, 25000)
+2026-03-10 21:57:14,535 - Thread-2 - INFO - Started files 21250 to 22500
+2026-03-10 21:57:14,543 - MainThread - INFO - Thread-5 launched   range (25000, 26250)
+2026-03-10 21:57:14,545 - MainThread - INFO - Thread-6 launched   range (26250, 27500)
+2026-03-10 21:57:14,547 - MainThread - INFO - Thread-7 launched   range (27500, 28750)
+2026-03-10 21:57:14,548 - Thread-4 - INFO - Started files 23750 to 25000
+2026-03-10 21:57:14,548 - Thread-3 - INFO - Started files 22500 to 23750
+2026-03-10 21:57:14,551 - MainThread - INFO - Thread-8 launched   range (28750, 30000)
+2026-03-10 21:57:14,561 - Thread-6 - INFO - Started files 26250 to 27500
+2026-03-10 21:57:14,564 - Thread-7 - INFO - Started files 27500 to 28750
+2026-03-10 21:57:14,570 - Thread-5 - INFO - Started files 25000 to 26250
+2026-03-10 21:57:14,571 - Thread-8 - INFO - Started files 28750 to 30000
+2026-03-10 21:57:37,134 - MainThread - INFO - Pipeline started
+2026-03-10 21:57:37,134 - MainThread - INFO - Files: 30000 to 40000 | Total: 10000 | Threads: 8 | Chunk size: 1250
+2026-03-10 21:57:39,031 - MainThread - INFO - Database connected and table verified
+2026-03-10 21:57:39,032 - MainThread - INFO - Thread-1 launched   range (30000, 31250)
+2026-03-10 21:57:39,034 - MainThread - INFO - Thread-2 launched   range (31250, 32500)
+2026-03-10 21:57:39,035 - MainThread - INFO - Thread-3 launched   range (32500, 33750)
+2026-03-10 21:57:39,035 - MainThread - INFO - Thread-4 launched   range (33750, 35000)
+2026-03-10 21:57:39,036 - MainThread - INFO - Thread-5 launched   range (35000, 36250)
+2026-03-10 21:57:39,038 - MainThread - INFO - Thread-6 launched   range (36250, 37500)
+2026-03-10 21:57:39,041 - MainThread - INFO - Thread-7 launched   range (37500, 38750)
+2026-03-10 21:57:39,044 - Thread-2 - INFO - Started files 31250 to 32500
+2026-03-10 21:57:39,044 - Thread-1 - INFO - Started files 30000 to 31250
+2026-03-10 21:57:39,062 - Thread-3 - INFO - Started files 32500 to 33750
+2026-03-10 21:57:39,062 - Thread-6 - INFO - Started files 36250 to 37500
+2026-03-10 21:57:39,065 - Thread-5 - INFO - Started files 35000 to 36250
+2026-03-10 21:57:39,084 - MainThread - INFO - Thread-8 launched   range (38750, 40000)
+2026-03-10 21:57:39,084 - Thread-7 - INFO - Started files 37500 to 38750
+2026-03-10 21:57:39,093 - Thread-4 - INFO - Started files 33750 to 35000
+2026-03-10 21:57:39,126 - Thread-8 - INFO - Started files 38750 to 40000
+2026-03-10 21:57:49,581 - MainThread - INFO - All threads finished in 94.68s
+2026-03-10 21:57:49,582 - MainThread - INFO - Pipeline complete
+2026-03-10 21:57:51,043 - MainThread - INFO - Pipeline started
+2026-03-10 21:57:51,044 - MainThread - INFO - Files: 40000 to 50000 | Total: 10000 | Threads: 8 | Chunk size: 1250
+2026-03-10 21:57:51,168 - MainThread - INFO - Database connected and table verified
+2026-03-10 21:57:51,170 - MainThread - INFO - Thread-1 launched   range (40000, 41250)
+2026-03-10 21:57:51,171 - MainThread - INFO - Thread-2 launched   range (41250, 42500)
+2026-03-10 21:57:51,172 - MainThread - INFO - Thread-3 launched   range (42500, 43750)
+2026-03-10 21:57:51,172 - MainThread - INFO - Thread-4 launched   range (43750, 45000)
+2026-03-10 21:57:51,173 - MainThread - INFO - Thread-5 launched   range (45000, 46250)
+2026-03-10 21:57:51,174 - MainThread - INFO - Thread-6 launched   range (46250, 47500)
+2026-03-10 21:57:51,175 - MainThread - INFO - Thread-7 launched   range (47500, 48750)
+2026-03-10 21:57:51,175 - MainThread - INFO - Thread-8 launched   range (48750, 50000)
+2026-03-10 21:57:51,178 - Thread-1 - INFO - Started files 40000 to 41250
+2026-03-10 21:57:51,178 - Thread-2 - INFO - Started files 41250 to 42500
+2026-03-10 21:57:51,180 - Thread-3 - INFO - Started files 42500 to 43750
+2026-03-10 21:57:51,180 - Thread-5 - INFO - Started files 45000 to 46250
+2026-03-10 21:57:51,180 - Thread-4 - INFO - Started files 43750 to 45000
+2026-03-10 21:57:51,182 - Thread-6 - INFO - Started files 46250 to 47500
+2026-03-10 21:57:51,183 - Thread-7 - INFO - Started files 47500 to 48750
+2026-03-10 21:57:51,183 - Thread-8 - INFO - Started files 48750 to 50000
+2026-03-10 21:58:07,455 - MainThread - INFO - Pipeline started
+2026-03-10 21:58:07,456 - MainThread - INFO - Files: 50000 to 58923 | Total: 8923 | Threads: 8 | Chunk size: 1115
+2026-03-10 21:58:07,594 - MainThread - INFO - Database connected and table verified
+2026-03-10 21:58:07,595 - MainThread - INFO - Thread-1 launched   range (50000, 51115)
+2026-03-10 21:58:07,596 - MainThread - INFO - Thread-2 launched   range (51115, 52230)
+2026-03-10 21:58:07,597 - MainThread - INFO - Thread-3 launched   range (52230, 53345)
+2026-03-10 21:58:07,598 - MainThread - INFO - Thread-4 launched   range (53345, 54460)
+2026-03-10 21:58:07,599 - MainThread - INFO - Thread-5 launched   range (54460, 55575)
+2026-03-10 21:58:07,600 - MainThread - INFO - Thread-6 launched   range (55575, 56690)
+2026-03-10 21:58:07,601 - MainThread - INFO - Thread-7 launched   range (56690, 57805)
+2026-03-10 21:58:07,607 - MainThread - INFO - Thread-8 launched   range (57805, 58923)
+2026-03-10 21:58:07,608 - Thread-1 - INFO - Started files 50000 to 51115
+2026-03-10 21:58:07,609 - Thread-5 - INFO - Started files 54460 to 55575
+2026-03-10 21:58:07,609 - Thread-2 - INFO - Started files 51115 to 52230
+2026-03-10 21:58:07,609 - Thread-4 - INFO - Started files 53345 to 54460
+2026-03-10 21:58:07,609 - Thread-3 - INFO - Started files 52230 to 53345
+2026-03-10 21:58:07,617 - Thread-6 - INFO - Started files 55575 to 56690
+2026-03-10 21:58:07,622 - Thread-7 - INFO - Started files 56690 to 57805
+2026-03-10 21:58:07,625 - Thread-8 - INFO - Started files 57805 to 58923
+2026-03-10 22:00:04,566 - MainThread - INFO - All threads finished in 190.88s
+2026-03-10 22:00:04,566 - MainThread - INFO - Pipeline complete
+2026-03-10 22:00:24,136 - MainThread - INFO - All threads finished in 189.63s
+2026-03-10 22:00:24,137 - MainThread - INFO - Pipeline complete
+2026-03-10 22:02:03,021 - MainThread - INFO - All threads finished in 263.99s
+2026-03-10 22:02:03,022 - MainThread - INFO - Pipeline complete
+2026-03-10 22:02:29,999 - MainThread - INFO - All threads finished in 278.83s
+2026-03-10 22:02:29,999 - MainThread - INFO - Pipeline complete
+2026-03-10 22:02:47,940 - MainThread - INFO - All threads finished in 280.34s
+2026-03-10 22:02:47,940 - MainThread - INFO - Pipeline complete
