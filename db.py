@@ -4,7 +4,6 @@ import json
 import os
 from config import *
 
-os.makedirs("logs", exist_ok=True)
 
 db_logger = logging.getLogger("db_logger")
 db_logger.setLevel(logging.INFO)
@@ -120,3 +119,4 @@ def insert_into_database(cursor, con, batch, table_name):
         con.rollback()
 
         db_logger.error(f"INSERT FAILED: {e}")
+
